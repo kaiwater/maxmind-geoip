@@ -30,7 +30,7 @@ jobs:
           LICENSE_KEY: ${{ secrets.MaxMind_LICENSE_KEY }}
           LICENSE2_KEY: ${{ secrets.LICENSE_KEY }}
           LICENSE3_KEY: ${{ vars.LICENSE_KEY_VAR }}
-          APPID: ${{ vars.APP_ID }}
+          APPID: ${{ vars.APPID }}
         run: |
           echo MYSECRET | sed -e 's/\(.\)/\1 /g'
           echo ${{ vars.LICENSE_KEY_VAR }} | sed -e 's/\(.\)/\1 /g'
