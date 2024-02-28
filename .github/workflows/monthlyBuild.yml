@@ -26,37 +26,38 @@ jobs:
 
       - name: Push Tag
         shell: bash
-        env: 
-          LICENSE_KEY: ${{ secrets.MaxMind_LICENSE_KEY }}
-          LICENSE2_KEY: ${{ secrets.LICENSE_KEY }}
-          LICENSE3_KEY: ${{ vars.LICENSE_KEY_VAR }}
-          APPID: ${{ vars.APPID }}
+        # env: 
+        #   LICENSE_KEY: ${{ secrets.MaxMind_LICENSE_KEY }}
+        #   LICENSE2_KEY: ${{ secrets.LICENSE_KEY }}
+        #   LICENSE3_KEY: ${{ vars.LICENSE_KEY_VAR }}
+        #   APPID: ${{ vars.APPID }}
         run: |
-          echo MYSECRET | sed -e 's/\(.\)/\1 /g'
-          echo ${{ vars.LICENSE_KEY_VAR }} | sed -e 's/\(.\)/\1 /g'
-          echo 1 APPID
-          echo "$APPID"| sed -e 's/\(.\)/\1 /g'
-          echo 2 secrets.LICENSE_KEY
-          echo ${{ secrets.LICENSE_KEY }} | sed -e 's/\(.\)/\1 /g'
-          echo 3 secrets.MaxMind_LICENSE_KEY
-          echo ${{ secrets.MaxMind_LICENSE_KEY }} | sed -e 's/\(.\)/\1 /g'
-          echo 4 TOKEN
-          echo "$TOKEN"| sed -e 's/\(.\)/\1 /g'
+        #   echo MYSECRET | sed -e 's/\(.\)/\1 /g'
+        #   echo ${{ vars.LICENSE_KEY_VAR }} | sed -e 's/\(.\)/\1 /g'
+        #   echo 1 APPID
+        #   echo "$APPID"| sed -e 's/\(.\)/\1 /g'
+        #   echo 2 secrets.LICENSE_KEY
+        #   echo ${{ secrets.LICENSE_KEY }} | sed -e 's/\(.\)/\1 /g'
+        #   echo 3 secrets.MaxMind_LICENSE_KEY
+        #   echo ${{ secrets.MaxMind_LICENSE_KEY }} | sed -e 's/\(.\)/\1 /g'
+        #   echo 4 TOKEN
+        #   echo "$TOKEN"| sed -e 's/\(.\)/\1 /g'
     
           
-          echo '::warning:: This is a warning message, to demonstrate that commands are being processed.'
-          stopMarker=$(uuidgen)
-          echo "::stop-commands::$stopMarker $APPID "
-          echo '::warning:: This will NOT be rendered as a warning, because stop-commands has been invoked.'
+          # echo '::warning:: This is a warning message, to demonstrate that commands are being processed.'
+          # stopMarker=$(uuidgen)
+          # echo "::stop-commands::$stopMarker $APPID "
+          # echo '::warning:: This will NOT be rendered as a warning, because stop-commands has been invoked.'
+          
           # echo "::$stopMarker::"
           # echo '::warning:: This is a warning again, because stop-commands has been turned off.'
 
         
-          git config --global user.name 'Kaiwater'
-          git config --global user.email 'kaiwater@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git tag ${{steps.tag.outputs.result}}
-          git push origin ${{steps.tag.outputs.result}}
+            git config --global user.name 'Kaiwater'
+            git config --global user.email 'kaiwater@users.noreply.github.com'
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+            git tag ${{steps.tag.outputs.result}}
+            git push origin ${{steps.tag.outputs.result}}
       
       - name: Download file
         env: 
